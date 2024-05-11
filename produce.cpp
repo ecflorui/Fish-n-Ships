@@ -25,7 +25,7 @@ void genCave() {
 int near(int x, int y) {
     int count = 0;
     for(int dh = -1; dh <= 1; dh++) {
-        for(int dw = -1; dw <= t1; dw++) {
+        for(int dw = -1; dw <= 1; dw++) {
             if(!(dw == 0 && dh == 0)) {
                 int nh = y + dh;
                 int nw = x + dw;
