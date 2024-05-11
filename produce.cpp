@@ -3,15 +3,17 @@
 #include <cstdlib>
 #include <ctime>
 
-#define WIDTH 200
-#define HEIGHT 120
+#define WIDTH 100
+#define HEIGHT 100
 int ALIVE = 1;
 int DEAD = 0;
 int map[HEIGHT][WIDTH];
 int seed = std::time(nullptr);
+sf::Color darkBlue = sf::Color(0, 0, 220);
+sf::Color darkGreen = sf::Color(0, 210, 0);
 
-int aliveProb = 58;
-int generations = 1;
+int aliveProb = 53;
+int generations = 5;
 
 void genCave() {
     std::srand(seed);
@@ -59,7 +61,7 @@ void updateMap() {
 }
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(WIDTH * 4, HEIGHT * 4), "Cellular Automata");
+    sf::RenderWindow window(sf::VideoMode(WIDTH * 4, HEIGHT * 4), "FISH N' SHIPS (PHI)");
     window.setFramerateLimit(10); // Limit frame rate to 10 FPS for visualization
 
     genCave();
@@ -81,9 +83,9 @@ int main() {
                 sf::RectangleShape cell(sf::Vector2f(4.f, 4.f)); // Larger cell size
                 cell.setPosition(w * 4.f, h * 4.f); // Position each cell in the grid
                 if (map[h][w] == ALIVE) {
-                    cell.setFillColor(sf::Color::Green); // Alive cells are green
+                    cell.setFillColor(darkGreen); // Alive cells are green
                 } else {
-                    cell.setFillColor(sf::Color::Blue); // Dead cells are blue
+                    cell.setFillColor(darkBlue); // Dead cells are blue
                 }
                 window.draw(cell);
             }
@@ -94,3 +96,6 @@ int main() {
 
     return 0;
 }
+
+// to run do g++ produce.cpp -o prog -I/opt/homebrew/Cellar/sfml/2.6.1/include/ -L/opt/homebrew/Cellar/sfml/2.6.1/lib/ -lsfml-graphics -lsfml-window -lsfml-system
+//and then ./prog
