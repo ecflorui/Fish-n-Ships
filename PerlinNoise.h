@@ -7,7 +7,7 @@ class PerlinNoise {
     PerlinNoise();
     PerlinNoise(unsigned int seed);
     double noise(double x, double y) const;
-    double octaveNoise(double x, double y, int octaves, double persistence) const;
+    double octaveNoise(double x, double y, int octaves, double persistence, double scale) const;
 
 private:
 std::vector<int> p;
